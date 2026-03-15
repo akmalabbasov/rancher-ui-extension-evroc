@@ -1,0 +1,7 @@
+{
+  "name": "evroc",
+  "version": "0.1.0",
+  "label": "Evroc",
+  "description": "Custom UI components for the Evroc Rancher node driver",
+  "icon": "icon.svg"
+}

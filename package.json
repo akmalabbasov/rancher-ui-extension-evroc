@@ -1,0 +1,10 @@
+{
+  "name": "rancher-ui-extension-evroc",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Rancher UI extension scaffold for the Evroc node driver",
+  "scripts": {
+    "build": "echo \"Build tooling not wired yet\"",
+    "dev": "echo \"Dev tooling not wired yet\""
+  }
+}
