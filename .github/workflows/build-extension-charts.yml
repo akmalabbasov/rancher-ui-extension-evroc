@@ -1,6 +1,9 @@
 name: Build and Release Extension Charts
 
 on:
+  push:
+    tags:
+      - "*-*.*.*"
   workflow_dispatch:
   release:
     types:

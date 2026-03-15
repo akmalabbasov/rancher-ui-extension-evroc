@@ -1,6 +1,9 @@
 name: Build and Release Extension Catalog
 
 on:
+  push:
+    tags:
+      - "*-*.*.*"
   workflow_dispatch:
   release:
     types:
