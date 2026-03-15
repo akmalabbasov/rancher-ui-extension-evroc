@@ -57,29 +57,16 @@
       />
     </div>
 
-    <div class="split">
-      <div class="field">
-        <label for="evroc-disk-size-gb">Disk Size (GB)</label>
-        <input
-          id="evroc-disk-size-gb"
-          :disabled="isDisabled"
-          :value="value.diskSizeGB || 30"
-          min="1"
-          type="number"
-          @input="setField('diskSizeGB', asInt($event.target.value, 30))"
-        />
-      </div>
-
-      <div class="field">
-        <label for="evroc-name-prefix">Name Prefix</label>
-        <input
-          id="evroc-name-prefix"
-          :disabled="isDisabled"
-          :value="value.namePrefix || ''"
-          type="text"
-          @input="setField('namePrefix', $event.target.value)"
-        />
-      </div>
+    <div class="field">
+      <label for="evroc-disk-size-gb">Disk Size (GB)</label>
+      <input
+        id="evroc-disk-size-gb"
+        :disabled="isDisabled"
+        :value="value.diskSizeGB || 30"
+        min="1"
+        type="number"
+        @input="setField('diskSizeGB', asInt($event.target.value, 30))"
+      />
     </div>
 
     <div class="field">
@@ -103,11 +90,49 @@
         @input="setField('kubernetesAPISourceCIDR', $event.target.value)"
       />
     </div>
+
+    <div class="split">
+      <div class="field">
+        <label for="evroc-ssh-user">SSH User</label>
+        <input
+          id="evroc-ssh-user"
+          :disabled="isDisabled"
+          :value="value.sshUser || 'ubuntu'"
+          type="text"
+          @input="setField('sshUser', $event.target.value)"
+        />
+      </div>
+
+      <div class="field">
+        <label for="evroc-ssh-port">SSH Port</label>
+        <input
+          id="evroc-ssh-port"
+          :disabled="isDisabled"
+          :value="value.sshPort || 22"
+          min="1"
+          type="number"
+          @input="setField('sshPort', asInt($event.target.value, 22))"
+        />
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="evroc-engine-port">Engine Port</label>
+      <input
+        id="evroc-engine-port"
+        :disabled="isDisabled"
+        :value="value.enginePort || 2376"
+        min="1"
+        type="number"
+        @input="setField('enginePort', asInt($event.target.value, 2376))"
+      />
+    </div>
   </div>
 </template>
 
-<script lang="ts">
+<script>
 export default {
+  emits: ['validationChanged'],
   name: 'EvrocMachineConfig',
 
   props: {
@@ -119,7 +144,7 @@ export default {
       type:    String,
       default: 'create'
     },
-    busy: {
+    disabled: {
       type:    Boolean,
       default: false
     },
@@ -130,12 +155,12 @@ export default {
   },
 
   computed: {
-    isDisabled(): boolean {
-      return this.mode === 'view' || this.busy;
+    isDisabled() {
+      return this.mode === 'view' || this.disabled;
     },
 
-    isValid(): boolean {
-      return !!(this.value?.projectID || '').trim() && !!(this.value?.namePrefix || '').trim();
+    isValid() {
+      return !!(this.value?.projectID || '').trim();
     }
   },
 
@@ -150,12 +175,12 @@ export default {
   },
 
   methods: {
-    setField(key: string, val: string | number) {
-      this.$set(this.value, key, val);
+    setField(key, val) {
+      this.value[key] = val;
       this.emitValidation();
     },
 
-    asInt(val: string, fallback: number): number {
+    asInt(val, fallback) {
       const parsed = parseInt(val, 10);
 
       if (Number.isNaN(parsed)) {

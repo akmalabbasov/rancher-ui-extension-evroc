@@ -1,100 +1,71 @@
-<template>
-  <div class="evroc-credential">
-    <div class="field">
-      <label for="evroc-access-token">Access Token</label>
-      <input
-        id="evroc-access-token"
-        :disabled="isView"
-        :value="value.accessToken || ''"
-        type="password"
-        autocomplete="off"
-        @input="setField('accessToken', $event.target.value)"
-      />
-    </div>
+<script>
+import CreateEditView from '@shell/mixins/create-edit-view';
+import FormValidation from '@shell/mixins/form-validation';
+import { LabeledInput } from '@components/Form/LabeledInput';
 
-    <div class="field">
-      <label for="evroc-api-url">API URL</label>
-      <input
-        id="evroc-api-url"
-        :disabled="isView"
-        :value="value.apiUrl || 'https://api.evroc.com'"
-        type="text"
-        @input="setField('apiUrl', $event.target.value)"
-      />
-    </div>
-  </div>
-</template>
-
-<script lang="ts">
 export default {
+  components: { LabeledInput },
+  emits:      ['validationChanged', 'valueChanged'],
+  mixins:     [CreateEditView, FormValidation],
   name: 'EvrocCloudCredential',
 
-  props: {
-    value: {
-      type:     Object,
-      required: true
-    },
-    mode: {
-      type:    String,
-      default: 'create'
-    }
+  data() {
+    return {
+      fvFormRuleSets: [{ path: 'decodedData.accessToken', rules: ['required'] }]
+    };
   },
 
   computed: {
-    isView(): boolean {
-      return this.mode === 'view';
-    },
-
-    isValid(): boolean {
-      return !!(this.value?.accessToken || '').trim();
+    apiUrlValue() {
+      return this.value.decodedData.apiUrl || 'https://api.evroc.com';
     }
   },
 
   watch: {
-    value: {
-      deep:      true,
-      immediate: true,
-      handler() {
-        this.emitValidation();
-      }
+    fvFormIsValid(newValue) {
+      this.$emit('validationChanged', !!newValue);
     }
   },
 
   methods: {
-    setField(key: string, val: string) {
-      this.$set(this.value, key, val);
-      this.emitValidation();
+    setField(key, val) {
+      this.$emit('valueChanged', key, val);
     },
 
-    emitValidation() {
-      this.$emit('validationChanged', this.isValid);
-    },
-
-    async test(): Promise<boolean> {
-      return this.isValid;
+    async test() {
+      return !!(this.value.decodedData.accessToken || '').trim();
     }
   }
 };
 </script>
 
+<template>
+  <div class="evroc-credential">
+    <LabeledInput
+      :value="value.decodedData.accessToken"
+      label="Access Token"
+      placeholder="Evroc API bearer token"
+      type="password"
+      autocomplete="off"
+      :mode="mode"
+      :required="true"
+      :rules="fvGetAndReportPathRules('decodedData.accessToken')"
+      @update:value="setField('accessToken', $event)"
+    />
+
+    <LabeledInput
+      :value="apiUrlValue"
+      label="API URL"
+      placeholder="https://api.evroc.com"
+      :mode="mode"
+      @update:value="setField('apiUrl', $event)"
+    />
+  </div>
+</template>
+
 <style scoped>
 .evroc-credential {
   display: grid;
   gap: 16px;
-}
-
-.field {
-  display: grid;
-  gap: 6px;
-}
-
-label {
-  font-weight: 600;
-}
-
-input {
-  border: 1px solid #b7c5d1;
-  border-radius: 6px;
-  padding: 10px 12px;
 }
 </style>

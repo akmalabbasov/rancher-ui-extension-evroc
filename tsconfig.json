@@ -1,15 +1,47 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
+    "target": "ES2018",
     "module": "ESNext",
     "moduleResolution": "Node",
-    "strict": false,
-    "jsx": "preserve",
+    "lib": [
+      "ESNext",
+      "ESNext.AsyncIterable",
+      "DOM"
+    ],
+    "allowJs": true,
+    "sourceMap": false,
+    "strict": true,
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "~/*": [
+        "./*"
+      ],
+      "@/*": [
+        "./*"
+      ],
+      "@shell/*": [
+        "./node_modules/@rancher/shell/*"
+      ]
+    },
+    "typeRoots": [
+      "./node_modules",
+      "./node_modules/@rancher/shell/types"
+    ],
+    "types": [
+      "@types/node",
+      "cypress",
+      "rancher",
+      "shell"
+    ],
     "esModuleInterop": true,
     "skipLibCheck": true
   },
   "include": [
     "pkg/**/*.ts",
     "pkg/**/*.vue"
+  ],
+  "exclude": [
+    "node_modules"
   ]
 }

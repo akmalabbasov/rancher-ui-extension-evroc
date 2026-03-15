@@ -4,11 +4,27 @@
   "version": "0.1.0",
   "description": "Rancher UI extension scaffold for the Evroc node driver",
   "packageManager": "yarn@1.22.22",
+  "engines": {
+    "node": ">=20"
+  },
   "workspaces": [
     "pkg/*"
   ],
+  "dependencies": {
+    "@rancher/components": "^0.2.1-alpha.0",
+    "@rancher/shell": "3.0.1"
+  },
+  "resolutions": {
+    "@types/node": "~20.10.0",
+    "@types/lodash": "4.17.5"
+  },
   "scripts": {
-    "build": "echo \"Build tooling not wired yet\"",
-    "dev": "echo \"Dev tooling not wired yet\""
+    "dev": "NODE_ENV=dev ./node_modules/.bin/vue-cli-service serve",
+    "build": "./node_modules/.bin/vue-cli-service build",
+    "clean": "./node_modules/@rancher/shell/scripts/clean",
+    "build-pkg": "./node_modules/@rancher/shell/scripts/build-pkg.sh",
+    "serve-pkgs": "./node_modules/@rancher/shell/scripts/serve-pkgs",
+    "publish-pkgs": "./node_modules/@rancher/shell/scripts/extension/publish",
+    "parse-tag-name": "./node_modules/@rancher/shell/scripts/extension/parse-tag-name"
   }
 }
