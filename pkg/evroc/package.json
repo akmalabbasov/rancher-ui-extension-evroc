@@ -1,6 +1,6 @@
 {
   "name": "rancher-ui-extension-evroc",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "label": "Evroc",
   "description": "Custom UI components for the Evroc Rancher node driver",
   "rancher": {

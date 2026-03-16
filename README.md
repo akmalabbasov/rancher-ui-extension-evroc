@@ -55,6 +55,6 @@ Sources:
 ## Next Steps
 
 1. Enable GitHub Pages and create a `gh-pages` branch in the repo.
-2. Push the repo and create a tagged GitHub release using the extension package version tag format: `evroc-0.1.0`.
+2. Push the repo and create a tagged GitHub release using the extension package version tag format: `evroc-0.1.4`.
 3. Validate the UI against a live Rancher instance.
 4. Add proxy-backed credential testing and dynamic option loading.
