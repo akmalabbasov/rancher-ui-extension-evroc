@@ -26,10 +26,10 @@ What is not done yet:
 
 ## Structure
 
-- `pkg/evroc/package.json`: extension package metadata
-- `pkg/evroc/index.ts`: extension entrypoint
-- `pkg/evroc/cloud-credential/evroc.vue`: Evroc auth fields
-- `pkg/evroc/machine-config/evroc.vue`: Evroc machine configuration fields
+- `pkg/rancher-ui-extension-evroc/package.json`: extension package metadata
+- `pkg/rancher-ui-extension-evroc/index.ts`: extension entrypoint
+- `pkg/rancher-ui-extension-evroc/cloud-credential/evroc.vue`: Evroc auth fields
+- `pkg/rancher-ui-extension-evroc/machine-config/evroc.vue`: Evroc machine configuration fields
 - `package.json`: root workspace metadata for local development
 - `tsconfig.json`: minimal TypeScript config
 
@@ -55,6 +55,6 @@ Sources:
 ## Next Steps
 
 1. Enable GitHub Pages and create a `gh-pages` branch in the repo.
-2. Push the repo and create a tagged GitHub release using the extension package version tag format: `evroc-0.1.5`.
+2. Push the repo and create a tagged GitHub release using the extension package version tag format: `rancher-ui-extension-evroc-0.1.6`.
 3. Validate the UI against a live Rancher instance.
 4. Add proxy-backed credential testing and dynamic option loading.
