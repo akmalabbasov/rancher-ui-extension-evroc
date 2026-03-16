@@ -1,5 +1,5 @@
-const config = require('@rancher/shell/pkg/vue.config');
+const config = require('@rancher/shell/vue.config');
 
-module.exports = config(__dirname, {
+module.exports = require('./.shell/pkg/vue.config')(__dirname, {
   excludes: [],
 });

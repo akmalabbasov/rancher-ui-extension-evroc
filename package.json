@@ -1,6 +1,6 @@
 {
   "name": "rancher-ui-extension-evroc",
-  "private": true,
+  "private": false,
   "version": "0.1.0",
   "description": "Rancher UI extension scaffold for the Evroc node driver",
   "packageManager": "yarn@1.22.22",
