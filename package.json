@@ -7,9 +7,6 @@
   "engines": {
     "node": ">=20"
   },
-  "workspaces": [
-    "pkg/*"
-  ],
   "dependencies": {
     "@rancher/components": "^0.2.1-alpha.0",
     "@rancher/shell": "3.0.1"
