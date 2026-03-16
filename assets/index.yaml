@@ -1,0 +1,25 @@
+apiVersion: v1
+entries:
+  rancher-ui-extension-evroc:
+  - annotations:
+      catalog.cattle.io/certified: rancher
+      catalog.cattle.io/display-name: Evroc
+      catalog.cattle.io/namespace: cattle-ui-plugin-system
+      catalog.cattle.io/os: linux
+      catalog.cattle.io/permits-os: linux, windows
+      catalog.cattle.io/rancher-version: '>= 2.10.0'
+      catalog.cattle.io/scope: management
+      catalog.cattle.io/ui-component: plugins
+      catalog.cattle.io/ui-extensions-version: '>= 3.0.0 < 4.0.0'
+    apiVersion: v2
+    appVersion: 0.1.6
+    created: "2026-03-16T13:23:31.675708598Z"
+    description: Custom UI components for the Evroc Rancher node driver
+    digest: 4e8619ff91f5f28498dfac3a746df280e3fb41f4e169ad04dea112928dc3a5b3
+    icon: icon.svg
+    name: rancher-ui-extension-evroc
+    type: application
+    urls:
+    - assets/rancher-ui-extension-evroc/rancher-ui-extension-evroc-0.1.6.tgz
+    version: 0.1.6
+generated: "2026-03-16T13:23:31.675059547Z"

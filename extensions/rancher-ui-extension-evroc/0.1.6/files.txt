@@ -1,0 +1,9 @@
+plugin/package.json
+plugin/rancher-ui-extension-evroc-0.1.6.umd.min.345.js
+plugin/rancher-ui-extension-evroc-0.1.6.umd.min.345.js.map
+plugin/rancher-ui-extension-evroc-0.1.6.umd.min.cloud-credential.js
+plugin/rancher-ui-extension-evroc-0.1.6.umd.min.cloud-credential.js.map
+plugin/rancher-ui-extension-evroc-0.1.6.umd.min.js
+plugin/rancher-ui-extension-evroc-0.1.6.umd.min.js.map
+plugin/rancher-ui-extension-evroc-0.1.6.umd.min.machine-config.js
+plugin/rancher-ui-extension-evroc-0.1.6.umd.min.machine-config.js.map
